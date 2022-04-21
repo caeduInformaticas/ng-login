@@ -1,0 +1,107 @@
+body {
+  /* padding: 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.main-content {
+  background: #98d6e9d8;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.body-content {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: 48px 80px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 25px;
+  overflow: hidden;
+}
+.sign-content {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 36px;
+  background: #fff;
+  justify-content: center;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .title {
+    text-align: start;
+    margin: 24px 0px;
+    h2 {
+      font-family: "Courier New", Courier, monospace;
+    }
+  }
+}
+.promotion {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  background: black;
+}
+.form-content {
+  display: flex;
+  flex-direction: column;
+}
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.m-label {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #f7e5e5c7;
+  padding: 4px;
+  background: #f8f0da66;
+  color: #000;
+}
+.form-control:focus {
+  background: #e7e4b8;
+  outline: none !important;
+  border: 1px solid #f5ec6c;
+  box-shadow: 0 0 16px #f0e98398;
+}
+.btn {
+  border-radius: 4px;
+  width: 100%;
+  padding: 4px;
+  text-align: center;
+}
+.btn-default {
+  background: #b96933;
+  color: #ffffff;
+}
+.form-row {
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 767px) {
+    .body-content {
+        margin: 20px !important;
+    }
+    .sign-content {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    
+}
