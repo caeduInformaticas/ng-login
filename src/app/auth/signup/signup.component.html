@@ -2,12 +2,14 @@
     <div class="body-content">
         <div class="sign-content">
             <div class="logo">
-                <img src="https://png.pngtree.com/png-vector/20190301/ourmid/pngtree-programming-and-web-technology-vector-with-computer-illustration-png-image_755051.jpg"
-                    width="100" alt="">
+                <app-logo [iData]="iDataLogo">
+                </app-logo>
+                <!-- <img src="https://png.pngtree.com/png-vector/20190810/ourmid/pngtree-app-development-arrows-div-mobile-abstract-flat-color-icon-te-png-image_1653523.jpg"
+                    width="100" alt=""> -->
             </div>
             <div class="title">
                 <h2>
-                    Registrarme con mi cuenta de FULL STACK DEVELOPER
+                    Register to be a full stack developer
                 </h2>
             </div>
             <form [formGroup]="mForm" (ngSubmit)="submit()">
@@ -29,19 +31,44 @@
                     </div>
                     <button type="submit" class="btn btn-default">Register</button>
                     <div class="form-row">
-                        <div>
+                        <div class="align-center">
                             <input type="checkbox" class="form-check" formControlName="remember">
-                            <label class="m-label" for="email">Recordar mis datos</label>
+                            <label class="m-label" for="email">remember</label>
                         </div>
-                        <span>
-                            new data content
-                        </span>
+                        <a href="#" target="_blank" class="link">New Action</a>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="promotion">
-            
+        <div class="promotion" *ngIf="mShowPromotion">
+            <div class="p-header">
+                <span>
+                    Promotion
+                </span>
+            </div>
+            <div class="p-body">
+                <div class="p-title">
+                    <h1>
+                        Register and get a free badge, increase you skill
+                    </h1>
+                </div>
+                <div class="p-intro">
+                    <div class="p-empty">
+                    </div>
+                    <div class="p-info">
+                        <div class="intro1">
+                            <span>
+                                The value of being a software developer is very important, which is why we offer the appropriate training
+                            </span>
+                        </div>
+                        <div class="intro2">
+                            <span >
+                                Get more information after registering
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

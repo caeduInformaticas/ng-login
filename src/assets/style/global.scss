@@ -1,9 +1,3 @@
-body {
-  /* padding: 0px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
-}
 .main-content {
   background: #98d6e9d8;
   position: absolute;
@@ -25,10 +19,11 @@ body {
   overflow: hidden;
 }
 .sign-content {
+  overflow: auto;
   width: 40%;
   display: flex;
   flex-direction: column;
-  padding: 24px 36px;
+  padding: 24px 80px;
   background: #fff;
   justify-content: center;
   .logo {
@@ -38,17 +33,53 @@ body {
   }
   .title {
     text-align: start;
-    margin: 24px 0px;
+    margin: 18px 0px;
     h2 {
-      font-family: "Courier New", Courier, monospace;
+      font-family: sans-serif;
     }
   }
 }
 .promotion {
   width: 60%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: black;
+  color: white;
+  overflow: auto;
+  .p-header {
+    display: flex;
+    padding: 32px 24px;
+    justify-content: end;
+    align-items: center;
+  }
+  .p-body {
+    display: flex;
+    flex-direction: column;
+    padding: 48px;
+    .p-title {
+      font-size: 25px;
+      text-align: left;
+    }
+    .p-intro {
+      display: flex;
+      .p-empty {
+        width: 50%;
+      }
+      .p-info {
+        font-family: sans-serif;
+        width: 50%;
+        .intro1 {
+          padding: 20px 0px;
+          font-size: 24px;
+        }
+        .intro2 {
+          padding: 18px 0px;
+          font-size: 18px;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
 }
 .form-content {
   display: flex;
@@ -60,8 +91,8 @@ body {
   flex-direction: column;
 }
 .m-label {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: black;
+  font-weight: bold;
 }
 .form-control {
   border-radius: 5px;
@@ -83,16 +114,32 @@ body {
   text-align: center;
 }
 .btn-default {
-  background: #b96933;
+  background: #ffab73;
   color: #ffffff;
+  border: 2px solid #ffefe0;
+}
+.btn-default:hover {
+  opacity: 0.8;
+  box-shadow: 0 0 8px #ffab738f;
 }
 .form-row {
   display: flex;
+  margin-top: 24px;
   flex-direction: row;
-  background: transparent;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-
+.align-center {
+  display: flex;
+  align-items: center;
+}
+.invalid-input {
+  border: 2px solid #fd0000 !important;
+  box-shadow: 0 0 8px #ec8282b6 !important;
+}
+.link {
+  text-decoration: none;
+  color: #00d8ff;
+}
 @media screen and (max-width: 767px) {
     .body-content {
         margin: 20px !important;
@@ -100,8 +147,7 @@ body {
     .sign-content {
         width: 100% !important;
     }
-}
-
-@media screen and (max-width: 575px) {
-    
+    .sign-content {
+      padding: 0px 16px;
+    }
 }

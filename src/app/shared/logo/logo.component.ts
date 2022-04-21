@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+export interface IDATALOGO {
+  alt: string;
+  src: string;
+  width: number;
+  callback: () => void;
+};
 
 @Component({
   selector: 'app-logo',
@@ -6,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logo.component.scss']
 })
 export class LogoComponent implements OnInit {
-
+  @Input()
+  iData!: IDATALOGO;
+  
   constructor() { }
 
   ngOnInit(): void {

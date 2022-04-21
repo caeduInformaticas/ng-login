@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener , OnInit } from '@angular/core';
 import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { IDATALOGO } from 'src/app/shared/logo/logo.component';
 
 @Component({
   selector: 'app-signup',
@@ -7,7 +8,9 @@ import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
+  
+  mScreenWidth = 400;
+  mShowPromotion = true;
   mclickSumbmit = false;
   mForm = this.formBuilder.group({
     fullname: [
@@ -40,18 +43,27 @@ export class SignupComponent implements OnInit {
   });
 
   constructor(public formBuilder: FormBuilder) { 
-    console.log('init sign up constructor');
 
   }
 
   ngOnInit(): void {
-    console.log('init sign up');
-    
+    this.mScreenWidth = window.innerWidth;
+    this._initialize();
+  }
+  private _initialize() {
+    this._width();
+  }
+  private _width() {
+    if (this.mScreenWidth <= 767) {
+      this.mShowPromotion = false;
+    } else {
+      this.mShowPromotion = true;
+    }
   }
   submit() {
-    console.log(this.mForm.value);
+    this.mclickSumbmit = true;
     if (this.mForm.valid) {
-      this.f['name'].valid
+      console.log('!! Success login form');
     }
   }
   
@@ -61,5 +73,20 @@ export class SignupComponent implements OnInit {
     return this.mForm.controls;
   }
   
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.mScreenWidth = window.innerWidth;
+    this._width();
+  }
 
+  private _callbackLogo = () => {
+    window.open('https://eldeber.com.bo', '_blank');
+  };
+
+  iDataLogo: IDATALOGO = {
+    alt: 'Logo',
+    src: 'https://png.pngtree.com/png-vector/20190810/ourmid/pngtree-app-development-arrows-div-mobile-abstract-flat-color-icon-te-png-image_1653523.jpg',
+    width: 200,
+    callback: this._callbackLogo
+  };
 }
