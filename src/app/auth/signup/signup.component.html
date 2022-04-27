@@ -4,8 +4,6 @@
             <div class="logo">
                 <app-logo [iData]="iDataLogo">
                 </app-logo>
-                <!-- <img src="https://png.pngtree.com/png-vector/20190810/ourmid/pngtree-app-development-arrows-div-mobile-abstract-flat-color-icon-te-png-image_1653523.jpg"
-                    width="100" alt=""> -->
             </div>
             <div class="title">
                 <h2>
@@ -15,7 +13,7 @@
             <form [formGroup]="mForm" (ngSubmit)="submit()">
                 <div class="form-content">
                     <div class="form-group">
-                        <label class="m-label" for="fullname">Fullname</label>
+                        <label class="m-label" for="fullname">Full Name</label>
                         <input type="text" class="form-control" id="fullname" formControlName="fullname" required
                             name="Fullname" [class.invalid-input]="!f['fullname'].valid && mclickSumbmit">
                     </div>

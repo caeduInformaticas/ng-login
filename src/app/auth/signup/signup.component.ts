@@ -1,5 +1,7 @@
 import { Component, HostListener , OnInit } from '@angular/core';
 import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { AuthService } from 'src/app/handle/auth.service';
+import { EROUTER, RouterService } from 'src/app/handle/router.service';
 import { IDATALOGO } from 'src/app/shared/logo/logo.component';
 
 @Component({
@@ -17,7 +19,7 @@ export class SignupComponent implements OnInit {
       '',
       [
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(4),
         Validators.maxLength(60),
       ],
     ],
@@ -42,7 +44,10 @@ export class SignupComponent implements OnInit {
     ],
   });
 
-  constructor(public formBuilder: FormBuilder) { 
+  constructor(
+    public formBuilder: FormBuilder,
+    private sRouter: RouterService,
+    private sStorage: AuthService) { 
 
   }
 
@@ -62,8 +67,15 @@ export class SignupComponent implements OnInit {
   }
   submit() {
     this.mclickSumbmit = true;
-    if (this.mForm.valid) {
-      console.log('!! Success login form');
+    try {
+      if (this.mForm.valid) {
+        this.sStorage._storageUser(this.mForm.value);
+        this.sRouter._navigate(EROUTER.WELCOME)
+      }
+    } catch (error: any) {
+      if (error?.messasge) {
+        window.alert(error.message);
+      }
     }
   }
   
@@ -80,7 +92,7 @@ export class SignupComponent implements OnInit {
   }
 
   private _callbackLogo = () => {
-    window.open('https://eldeber.com.bo', '_blank');
+    window.open('https://github.com/caeduInformaticas/ng-login', '_blank');
   };
 
   iDataLogo: IDATALOGO = {
