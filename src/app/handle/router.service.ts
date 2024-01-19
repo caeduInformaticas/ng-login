@@ -47,7 +47,7 @@ export class RouterService {
     const appTitle = this.titleService.getTitle();
     this.router.events
       .pipe(
-        filter((event) => event instanceof NavigationEnd),
+        filter((event: any) => event instanceof NavigationEnd),
         map(() => {
           let child: any = this.activatedRoute.firstChild;
           while (child.firstChild) {
@@ -65,7 +65,7 @@ export class RouterService {
   }
   _navigate(key: EROUTER) {
     try {
-      const route = _ROUTES_.find((_r) => _r.key === key);
+      const route = _ROUTES_.find((_r: any) => _r.key === key);
       if (route) {
         this.router.navigate([route.path]);
       }
