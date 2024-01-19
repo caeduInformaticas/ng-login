@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { WelcomeComponent } from 'src/app/home/welcome/welcome.component';
 import { RouterModule, Routes } from '@angular/router';
 import { EROUTER, _ROUTES_ } from 'src/app/handle/router.service';
-const rHome = _ROUTES_.find((_r) => _r.key === EROUTER.WELCOME_PAGE);
+import { ModalLoadingComponent } from '../modals/modal-loading/modal-loading.component';
+import { ModalPageComponent } from '../modals/modal-page/modal-page.component';
+import { ModalMessageComponent } from '../modals/modal-message/modal-message.component';
+const rHome = _ROUTES_.find((_r: any) => _r.key === EROUTER.WELCOME_PAGE);
 
 const routes: Routes = [
   {
@@ -21,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [WelcomeComponent],
+  declarations: [WelcomeComponent, ModalLoadingComponent, ModalPageComponent, ModalMessageComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
