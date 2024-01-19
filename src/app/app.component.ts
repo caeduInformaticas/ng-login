@@ -18,7 +18,7 @@ export class AppComponent {
   private verifySession() {
     try {
       if (this.sStorage._getUser()) {
-        this.sRouter._navigate(EROUTER.WELCOME);
+        this.sRouter._navigate(EROUTER.WELCOME_PAGE);
       } else {
         this.sRouter._navigate(EROUTER.SIGNUP);
       }

@@ -1,8 +1,11 @@
-import { Component, HostListener , OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/handle/auth.service';
 import { EROUTER, RouterService } from 'src/app/handle/router.service';
 import { IDATALOGO } from 'src/app/shared/logo/logo.component';
+import { Store } from '@ngrx/store';
+import { changeStoreAppData } from '../../store-app/store/store-app.actions';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +13,7 @@ import { IDATALOGO } from 'src/app/shared/logo/logo.component';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  
+
   mScreenWidth = 400;
   mShowPromotion = true;
   mclickSumbmit = false;
@@ -22,6 +25,15 @@ export class SignupComponent implements OnInit {
         Validators.minLength(4),
         Validators.maxLength(60),
       ],
+    ],
+    ci: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(7),
+        Validators.maxLength(8),
+        Validators.pattern(/^[0-9]+$/),
+      ]
     ],
     email: [
       '',
@@ -40,14 +52,19 @@ export class SignupComponent implements OnInit {
     ],
     remember: [
       false,
-      Validators.required
+      [
+        Validators.required,
+        Validators.pattern(/^(true|false)$/i),
+      ]
     ],
   });
 
   constructor(
     public formBuilder: FormBuilder,
     private sRouter: RouterService,
-    private sStorage: AuthService) { 
+    private sStorage: AuthService,
+    private store: Store<{ storeAppData: any }>
+  ) {
 
   }
 
@@ -55,6 +72,7 @@ export class SignupComponent implements OnInit {
     this.mScreenWidth = window.innerWidth;
     this._initialize();
   }
+
   private _initialize() {
     this._width();
   }
@@ -70,7 +88,14 @@ export class SignupComponent implements OnInit {
     try {
       if (this.mForm.valid) {
         this.sStorage._storageUser(this.mForm.value);
-        this.sRouter._navigate(EROUTER.WELCOME)
+        this.store.dispatch(changeStoreAppData(
+          {
+            data: {
+              ...this.mForm.value,
+            },
+          }
+        ));
+        this.sRouter._navigate(EROUTER.WELCOME_PAGE)
       }
     } catch (error: any) {
       if (error?.messasge) {
@@ -78,13 +103,13 @@ export class SignupComponent implements OnInit {
       }
     }
   }
-  
+
   public get f(): {
     [key: string]: AbstractControl;
   } {
     return this.mForm.controls;
   }
-  
+
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     this.mScreenWidth = window.innerWidth;

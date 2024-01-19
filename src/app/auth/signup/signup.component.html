@@ -15,7 +15,13 @@
                     <div class="form-group">
                         <label class="m-label" for="fullname">Full Name</label>
                         <input type="text" class="form-control" id="fullname" formControlName="fullname" required
-                            name="Fullname" [class.invalid-input]="!f['fullname'].valid && mclickSumbmit">
+                            name="Fullname" [class.invalid-input]="!f['fullname'].valid && mclickSumbmit"
+                            >
+                    </div>
+                    <div class="form-group">
+                      <label class="m-label" for="ci">CI</label>
+                      <input type="text" class="form-control" id="ci" formControlName="ci" required
+                          ngModel="ci" name="Ci" [class.invalid-input]="!f['ci'].valid && mclickSumbmit">
                     </div>
                     <div class="form-group">
                         <label class="m-label" for="email">Email</label>

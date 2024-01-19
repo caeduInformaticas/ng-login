@@ -12,7 +12,12 @@ const routes: Routes = [
     path: EROUTER.DASHBOARD,
     loadChildren: () =>
       import('./modules/main/main.module').then((m) => m.MainModule)
-  }
+  },
+  {
+    path: EROUTER.HOME,
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomeModule)
+  },
 ];
 
 @NgModule({
