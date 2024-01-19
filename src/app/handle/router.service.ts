@@ -9,6 +9,8 @@ export enum EROUTER {
   DASHBOARD = 'dashboard',
   SIGNUP = 'signup',
   WELCOME = 'welcome',
+  HOME = 'home',
+  WELCOME_PAGE = 'welcome-page',
 }
 
 export const _ROUTES_ = [
@@ -22,6 +24,11 @@ export const _ROUTES_ = [
     title: 'Hi Friend',
     path: `${EROUTER.DASHBOARD}/${EROUTER.WELCOME}`,
   },
+  {
+    key: EROUTER.WELCOME_PAGE,
+    title: 'Home/Welcome Page',
+    path: `${EROUTER.HOME}/${EROUTER.WELCOME_PAGE}`,
+  },
 ];
 @Injectable({
   providedIn: 'root',
@@ -32,7 +39,7 @@ export class RouterService {
     public router: Router,
     private titleService: Title,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
   _initialize() {
     this.setTitle();
   }
@@ -63,12 +70,12 @@ export class RouterService {
         this.router.navigate([route.path]);
       }
     } catch (error) {
-        if (_MAP_MESSAGES.has(EERROR.E1)) {
-            const gMessage = _MAP_MESSAGES.get(EERROR.E1);
-            throw new Error(gMessage?.callback(gMessage.error()));
-        } else {
-            throw new Error('Type Error not exist');
-        }
+      if (_MAP_MESSAGES.has(EERROR.E1)) {
+        const gMessage = _MAP_MESSAGES.get(EERROR.E1);
+        throw new Error(gMessage?.callback(gMessage.error()));
+      } else {
+        throw new Error('Type Error not exist');
+      }
     }
   }
 }
